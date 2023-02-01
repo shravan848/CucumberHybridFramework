@@ -14,7 +14,7 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class driverFactory {
 	 static WebDriver driver;
-	 public static Logger log=Logger.getLogger(driverFactory.class);
+	 public static Logger log=Logger.getLogger("driverFactory");
 	 
 	public static void initializeBrowser(String browserName)
 	{
@@ -24,14 +24,15 @@ public class driverFactory {
 		{
 			
 			log.info("Chrome browser is started ");
-			DesiredCapabilities caps=new DesiredCapabilities();
-			caps.setAcceptInsecureCerts(true);
-			ChromeOptions options=new ChromeOptions();
-			options.addArguments("--incognito");
-			options.merge(caps);
-			driver = new ChromeDriver(options);
+//			DesiredCapabilities caps=new DesiredCapabilities();
+//			caps.setAcceptInsecureCerts(true);
+//			ChromeOptions options=new ChromeOptions();
+//			options.addArguments("--incognito");
+//			options.merge(caps);
+			//driver = new ChromeDriver(options);
 //			Object sessionId;
 //			sessionId=((ChromeDriver)driver).getSessionId().toString();
+			driver=new ChromeDriver();
 			driver.manage().window().maximize();
 			
 				
@@ -59,6 +60,7 @@ public class driverFactory {
 	public static WebDriver getDriver()
 	{
 		log.info("Chrome driver is selected "+driver.hashCode());
+		PropertyConfigurator.configure("Log4j.properties");
 		//System.out.println(driver.hashCode());
 		return driver;
 	}  
