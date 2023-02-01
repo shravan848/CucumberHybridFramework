@@ -38,6 +38,7 @@ public class search {
     @Then("^User should get valid product displayed in search results$")
     public void user_should_get_valid_product_displayed_in_search_results() throws Throwable {
          Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
+         System.out.println("HP Products are displayed...");
     }
 
     @Then("^User should get a message about no product matching$")

@@ -7,8 +7,9 @@ import io.cucumber.testng.CucumberOptions;
 		features="src/test/resources/features",
 		glue={"stepDefinitions","hooks"},
 		monochrome=true,
-		plugin= {"rerun:target/failedrerun.txt"}
-//		,tags= "@login"
+		plugin= {"pretty","rerun:target/failedrerun.txt"
+				,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+		,tags= "@search"
 //		,dryRun=true
 		)
 public class TestNGTestRunner extends AbstractTestNGCucumberTests{

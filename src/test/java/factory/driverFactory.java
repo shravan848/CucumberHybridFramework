@@ -1,7 +1,7 @@
 package factory;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+//import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,16 +14,15 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class driverFactory {
 	 static WebDriver driver;
-	 public static Logger log=Logger.getLogger("driverFactory");
-	 
+	 static Logger log=Logger.getLogger(driverFactory.class.getName());
 	public static void initializeBrowser(String browserName)
 	{
-		PropertyConfigurator.configure("Log4j.properties");
+		//PropertyConfigurator.configure("C:\\Users\\shravan\\eclipse-workspace\\CucumberHybridFramework\\src\\test\\resources\\Log4j.properties");
 		// 1-way using below:
 		if(browserName.equals("chrome"))
 		{
 			
-			log.info("Chrome browser is started ");
+			
 //			DesiredCapabilities caps=new DesiredCapabilities();
 //			caps.setAcceptInsecureCerts(true);
 //			ChromeOptions options=new ChromeOptions();
@@ -33,6 +32,8 @@ public class driverFactory {
 //			Object sessionId;
 //			sessionId=((ChromeDriver)driver).getSessionId().toString();
 			driver=new ChromeDriver();
+			log.info("Chrome browser is started ");
+			log.fatal("Chrome browser is started-- ");
 			driver.manage().window().maximize();
 			
 				
@@ -41,14 +42,14 @@ public class driverFactory {
 		else if(browserName.equals("edge"))
 		{
 			driver= new EdgeDriver();
-			log.info("Edge browser is started ");
+			//log.info("Edge browser is started ");
 			driver.manage().deleteAllCookies();
 			
 		}
 		else if(browserName.equals("firefox"))
 		{
 			driver= new FirefoxDriver();
-			log.info("Firefox browser is started ");
+			//log.info("Firefox browser is started ");
 		} 
 		else if(browserName.equals("safari"))
 		{
@@ -59,8 +60,7 @@ public class driverFactory {
 	}  
 	public static WebDriver getDriver()
 	{
-		log.info("Chrome driver is selected "+driver.hashCode());
-		PropertyConfigurator.configure("Log4j.properties");
+		//log.info("Chrome driver is selected "+driver.hashCode());
 		//System.out.println(driver.hashCode());
 		return driver;
 	}  
