@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 		plugin= {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"html:target/cucumberHtmlReport.html"
 				,"rerun:target/failedrerun.txt"}
-//		,tags="@search"
+		,tags="@search"
 //		,dryRun=true
 		,stepNotifications=true
 		)

@@ -1,6 +1,7 @@
 package factory;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 //import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +18,7 @@ public class driverFactory {
 	 static Logger log=Logger.getLogger(driverFactory.class.getName());
 	public static void initializeBrowser(String browserName)
 	{
+		PropertyConfigurator.configure("Log4j.properties");
 		//PropertyConfigurator.configure("C:\\Users\\shravan\\eclipse-workspace\\CucumberHybridFramework\\src\\test\\resources\\Log4j.properties");
 		// 1-way using below:
 		if(browserName.equals("chrome"))
@@ -32,8 +34,7 @@ public class driverFactory {
 //			Object sessionId;
 //			sessionId=((ChromeDriver)driver).getSessionId().toString();
 			driver=new ChromeDriver();
-			log.info("Chrome browser is started ");
-			log.fatal("Chrome browser is started-- ");
+			log.info("Chrome browser is started from driver Factory Class--");
 			driver.manage().window().maximize();
 			
 				
@@ -42,14 +43,14 @@ public class driverFactory {
 		else if(browserName.equals("edge"))
 		{
 			driver= new EdgeDriver();
-			//log.info("Edge browser is started ");
+			log.info("Edge browser is started from Driver Factory--");
 			driver.manage().deleteAllCookies();
 			
 		}
 		else if(browserName.equals("firefox"))
 		{
 			driver= new FirefoxDriver();
-			//log.info("Firefox browser is started ");
+			log.info("Firefox browser is started from Driver Factory--");
 		} 
 		else if(browserName.equals("safari"))
 		{
@@ -60,7 +61,7 @@ public class driverFactory {
 	}  
 	public static WebDriver getDriver()
 	{
-		//log.info("Chrome driver is selected "+driver.hashCode());
+		log.info("Chrome driver is selected ");
 		//System.out.println(driver.hashCode());
 		return driver;
 	}  

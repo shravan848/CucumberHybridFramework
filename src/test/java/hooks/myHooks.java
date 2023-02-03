@@ -24,6 +24,7 @@ WebDriver driver;
 	@Before
 	public void setup() throws IOException
 	{
+		System.out.println(">>This Hooks is executed before each test>>");
 		Properties prop=configReader.initializeProperties();
 		driverFactory.initializeBrowser(prop.getProperty("browser"));
 		driver=driverFactory.getDriver();
@@ -37,7 +38,7 @@ WebDriver driver;
 	public void tearDown(Scenario scenario)
 	{
       //String scenarioName = scenario.getName().replaceAll(" ","_");
-		
+		System.out.println("<<This Hooks is executed After each test<<");
 		if(scenario.isFailed()) 
 		{
 			
